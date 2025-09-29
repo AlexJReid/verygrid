@@ -1,0 +1,70 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta name="author" content="Alex Reid" />
+    <link href="style.css" type="text/css" rel="stylesheet" />
+    <title>VeryGrid - WebGPU powered grid</title>
+
+    <meta property="og:title" content="VeryGrid example" />
+    <meta
+      property="og:description"
+      content="VeryGrid is a massive data grid powered by WebGPU"
+    />
+    <meta property="og:image" content="3.png" />
+    <meta property="og:url" content="https://xllify.com/verygrid/" />
+    <meta property="og:type" content="website" />
+  </head>
+
+  <body>
+    <div class="container">
+      <canvas id="gpu-canvas"></canvas>
+      <canvas id="text-canvas"></canvas>
+      <!--
+        press option/alt to show this
+        -->
+      <div class="info">
+        <div><strong>VeryGrid</strong></div>
+        <div>
+          Cells: <span id="row-count">0</span> by
+          <span id="col-count">0</span> (<span id="total-count">0</span> total)
+        </div>
+        <div>Visible: <span id="visible-count">0</span></div>
+        <div>
+          Scroll: (<span id="scroll-x">0</span>, <span id="scroll-y">0</span>)
+        </div>
+        <div>Selected: <span id="selected-cell">None</span></div>
+        <div style="margin-top: 8px; font-size: 10px; color: #aaa">
+          hold option/alt for info, double click then enter to edit, esc to
+          cancal
+        </div>
+      </div>
+      <div class="fps-display"><span id="fps">0</span> fps</div>
+    </div>
+
+    <script src="verygrid.js"></script>
+    <script>
+      window.addEventListener("load", () => {
+        new VeryGrid({
+          rows: 250,
+          cols: 500,
+          updateMs: 75,
+          dataSource: function (grid) {
+            // update grid with random values
+            const updatesPerFrame = 1500;
+            for (let i = 0; i < updatesPerFrame; i++) {
+              const idx = Math.floor(Math.random() * grid.cellData.length);
+              const change = (Math.random() - 0.5) * 10;
+              grid.cellData[idx] += change;
+              grid.cellColors[idx] = change > 0 ? 0xff00aa00 : 0xffaa0000; // delta between old new breaches threshold, change colour
+            }
+          },
+          onChanged: function (row, col, value) {
+            console.log(`R${row}C${col} changed to: ${value}`);
+          },
+        });
+      });
+    </script>
+  </body>
+</html>
