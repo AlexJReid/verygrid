@@ -46,12 +46,12 @@
     <script>
       window.addEventListener("load", () => {
         new VeryGrid({
-          rows: 250,
-          cols: 500,
+          rows: 1000,
+          cols: 1000,
           updateMs: 75,
           dataSource: function (grid) {
             // update grid with random values
-            const updatesPerFrame = 1500;
+            const updatesPerFrame = 2000;
             for (let i = 0; i < updatesPerFrame; i++) {
               const idx = Math.floor(Math.random() * grid.cellData.length);
               const change = (Math.random() - 0.5) * 10;
