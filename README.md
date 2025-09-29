@@ -25,9 +25,11 @@ Putting all of that aside, out of curiosity, I built a massive grid that leverag
 
 You can see it here: https://xllify.com/verygrid/
 
+**Try scrolling around a bit and hit option/alt for some stats. Check your CPU/GPU load.**
+
 Currently desjtop only. You will need to toggle the WebGPU feature flag on macOS/iOS Safari.
 
-I'm quite impressed how approaching a solved problem a bit differently with a number of old-school performance tricks yields something pretty fast and fit for purpose (at least on a M2/M4 Mac - my PC is old.) **Try scrolling around a bit and hit option/alt for some stats. Check your CPU/GPU load.**
+I'm quite impressed how approaching a solved problem a bit differently with a number of old-school performance tricks yields something pretty fast and fit for purpose (at least on a M2/M4 Mac - my PC is old.)
 
 Confession: My good friend claude.ai helped me with the WebGPU code and some ideas.
 
