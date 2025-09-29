@@ -44,14 +44,15 @@ class VeryGrid {
 
     async init() {
         if (!navigator.gpu) {
-            alert("Doesn't look like WebGPU is supported. Try another browser.")
+            alert("Doesn't look like WebGPU is supported. Try another browser or check feature flags.")
+            showError("WebGPU is not supported by this browser.");
             return;
         }
 
         try {
             this.adapter = await navigator.gpu.requestAdapter();
             if (!this.adapter) {
-                alert('Unable to setup a GPU adapter.');
+                alert('Unable to setup a GPU adapter. Try another browser.');
                 return;
             }
 
@@ -73,6 +74,16 @@ class VeryGrid {
         } catch (error) {
             alert(`Failed to start: ${error.message}`);
         }
+    }
+
+    showError(message) {
+        const errorDiv = document.createElement('div');
+        errorDiv.className = 'error';
+        errorDiv.innerHTML = `
+            <h3>Oh dear</h3>
+            <p>${message}</p>
+        `;
+        document.body.appendChild(errorDiv);
     }
 
     async setupPipeline() {
