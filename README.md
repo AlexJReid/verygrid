@@ -15,11 +15,11 @@ A massive data grid experiment.
 
 ## Demo
 
-Demo with ONE MILLION cells https://xllify.com/verygrid/
+Demo with 1m cells https://xllify.com/verygrid/
 
 **Try scrolling around a bit and hit option/alt for some stats. Check your CPU/GPU load.**
 
-Video https://vimeo.com/manage/videos/1122933743
+Video https://vimeo.com/1122933743
 
 Currently desktop only. You will need to toggle the WebGPU feature flag on macOS/iOS Safari.
 
