@@ -45,7 +45,7 @@ class VeryGrid {
     async init() {
         if (!navigator.gpu) {
             alert("Doesn't look like WebGPU is supported. Try another browser or check feature flags.")
-            showError("WebGPU is not supported by this browser.");
+            showError("WebGPU is not supported or enabled in this browser.");
             return;
         }
 
@@ -53,6 +53,7 @@ class VeryGrid {
             this.adapter = await navigator.gpu.requestAdapter();
             if (!this.adapter) {
                 alert('Unable to setup a GPU adapter. Try another browser.');
+                showError("WebGPU is not supported or enabled in this browser.");
                 return;
             }
 
